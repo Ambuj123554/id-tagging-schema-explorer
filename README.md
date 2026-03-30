@@ -1,16 +1,98 @@
-# React + Vite
+# iD Tagging Schema Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A visual exploration tool for OpenStreetMap's iD editor tagging presets. Built to make sense of the complex preset schema that lives in hundreds of JSON files.
 
-Currently, two official plugins are available:
+**[Live Demo →](https://id-tagging-schema-explorer.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## The Problem
 
-## React Compiler
+The iD editor uses a preset system to help mappers tag features consistently. But understanding this schema is harder than it should be:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Presets are scattered across multiple JSON files
+- Inheritance chains aren't obvious (which preset extends what?)
+- Field sources are unclear (is this field inherited or defined here?)
+- No easy way to explore relationships between presets
 
-## Expanding the ESLint configuration
+If you've ever tried to contribute to the iD tagging schema or just wanted to understand how a preset works, you know the pain.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## What This Does
+
+This tool lets you explore the iD preset schema like you'd explore API documentation:
+
+- **Search presets** – Type "restaurant" and see all restaurant-related presets
+- **View details** – See all fields, tags, and metadata for any preset
+- **Trace inheritance** – Visual tree showing parent → current → children
+- **Understand fields** – Which fields are inherited vs. defined locally
+- **Explore relationships** – See which presets share the same parent
+
+Think of it as a schema browser that actually makes sense.
+
+## Features
+
+- Fast search with keyboard navigation (arrow keys, enter to select)
+- Preset detail panel with tabs (Fields, Inheritance, Relationships)
+- Inheritance tree visualization
+- Field source tracking (shows where each field comes from)
+- Category filtering
+- Clean, dev-tool-style interface
+
+## How It Works
+
+The app loads the processed iD tagging schema (presets + fields) and builds an in-memory index with:
+
+1. **Preset parsing** – Resolves inheritance chains, normalizes field references
+2. **Field mapping** – Links field definitions to their usage in presets
+3. **Relationship graph** – Builds parent-child relationships between presets
+
+Everything runs client-side. No server needed.
+
+## Tech Stack
+
+- **React** – UI components
+- **Vite** – Build tool and dev server
+- **Tailwind CSS** – Styling
+- **Pure JS/TS** – Schema parsing logic
+
+No heavyweight frameworks. Just the essentials.
+
+## Local Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/id-tagging-schema-explorer.git
+cd id-tagging-schema-explorer
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+```
+
+Open `http://localhost:5173` and you're good to go.
+
+## Why This Matters
+
+For OSM contributors working on the iD editor:
+
+- **Faster onboarding** – New contributors can understand the schema structure without diving into raw JSON
+- **Better preset design** – See how your changes fit into the existing hierarchy
+- **Documentation** – Acts as live documentation for the tagging schema
+
+The iD preset schema is one of the most important parts of the OSM editing experience. Making it easier to understand means better tools for millions of mappers.
+
+## Screenshots
+
+_Coming soon_
+
+## Current Status
+
+This is a working prototype using sample schema data. The schema parser and UI are functional. Next steps would be integrating the full iD preset schema from the official repository.
+
+## License
+
+MIT
+
+---
+
+Built as part of exploring OSM tooling and schema visualization. Feedback welcome.
