@@ -1,6 +1,9 @@
 # iD Tagging Schema Explorer
 
-A visual exploration tool for OpenStreetMap's iD editor tagging presets. Built to make sense of the complex preset schema that lives in hundreds of JSON files.
+A developer-focused tool to explore and understand OpenStreetMap’s iD tagging schema — without digging through hundreds of JSON files.
+
+This tool is a working prototype for the GSoC 2026 idea:
+**"Create a Web Application for Tagging Presets"**
 
 **[Live Demo →](https://id-tagging-schema-explorer.vercel.app/)**
 
@@ -14,6 +17,7 @@ The iD editor uses a preset system to help mappers tag features consistently. Bu
 - No easy way to explore relationships between presets
 
 If you've ever tried to contribute to the iD tagging schema or just wanted to understand how a preset works, you know the pain.
+The problem isn’t lack of information — it’s lack of visibility.
 
 ## What This Does
 
