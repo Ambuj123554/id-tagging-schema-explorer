@@ -83,7 +83,8 @@ The iD preset schema is one of the most important parts of the OSM editing exper
 
 ## Screenshots
 
-_Coming soon_
+<img width="1917" height="916" alt="image" src="https://github.com/user-attachments/assets/7ee553d3-7cba-4ebe-9c14-eb7ffc20e73f" />
+
 
 ## Current Status
 
