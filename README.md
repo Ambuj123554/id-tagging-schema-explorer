@@ -29,7 +29,14 @@ This tool lets you explore the iD preset schema like you'd explore API documenta
 - **Understand fields** – Which fields are inherited vs. defined locally
 - **Explore relationships** – See which presets share the same parent
 
+It turns raw schema data into something you can actually understand.
 Think of it as a schema browser that actually makes sense.
+
+## Why I Built This
+
+While contributing to the id-tagging-schema repository, I found it surprisingly difficult to locate and understand presets across multiple JSON files. Even with experience in OSM tagging, navigating the structure required manual searching and guesswork.
+
+This tool is an attempt to reduce that friction — by making the schema explorable instead of hidden.
 
 ## Features
 
@@ -92,7 +99,15 @@ The iD preset schema is one of the most important parts of the OSM editing exper
 
 ## Current Status
 
-This is a working prototype using sample schema data. The schema parser and UI are functional. Next steps would be integrating the full iD preset schema from the official repository.
+This is a working prototype demonstrating:
+
+- Preset search and exploration
+- Inheritance visualization (parent → current → children)
+- Field and relationship analysis
+
+Currently uses a structured subset of schema data for faster iteration.
+
+Next step: full integration with the official id-tagging-schema repository.
 
 ## License
 
