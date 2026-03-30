@@ -233,4 +233,4 @@ MIT
 
 ---
 
-Built as part of exploring OSM tooling and schema visualization. Feedback welcome.
+Built as part of exploring OSM tooling and schema visualization.Feedback and suggestions from the OSM community are highly appreciated.
