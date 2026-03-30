@@ -1,0 +1,579 @@
+{
+  "presets": {
+    "amenity": {
+      "name": "Amenity",
+      "tags": {
+        "amenity": "*"
+      },
+      "geometry": ["point", "area"],
+      "fields": ["name"],
+      "moreFields": ["description"],
+      "searchable": false
+    },
+    "amenity/restaurant": {
+      "name": "Restaurant",
+      "icon": "maki-restaurant",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "restaurant"
+      },
+      "terms": ["bar", "breakfast", "cafe", "café", "canteen", "coffee", "dine", "dining", "dinner", "drive-in", "eat", "grill", "lunch"],
+      "fields": [
+        "name",
+        "cuisine",
+        "address",
+        "building_area",
+        "phone",
+        "website",
+        "email",
+        "takeaway",
+        "delivery",
+        "smoking",
+        "outdoor_seating"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "internet_access",
+        "payment_multi",
+        "capacity",
+        "reservation"
+      ],
+      "reference": "amenity"
+    },
+    "amenity/cafe": {
+      "name": "Cafe",
+      "icon": "maki-cafe",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "cafe"
+      },
+      "terms": ["bistro", "coffee", "tea"],
+      "fields": [
+        "name",
+        "cuisine",
+        "address",
+        "phone",
+        "website",
+        "outdoor_seating",
+        "internet_access"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "payment_multi",
+        "smoking",
+        "takeaway"
+      ],
+      "reference": "amenity"
+    },
+    "amenity/bar": {
+      "name": "Bar",
+      "icon": "maki-bar",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "bar"
+      },
+      "terms": ["beer", "booze", "club", "cocktail", "dive", "drink", "lounge", "pub", "spirits", "wine"],
+      "fields": [
+        "name",
+        "address",
+        "phone",
+        "website",
+        "outdoor_seating",
+        "smoking"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "payment_multi",
+        "microbrewery"
+      ],
+      "reference": "amenity"
+    },
+    "shop": {
+      "name": "Shop",
+      "tags": {
+        "shop": "*"
+      },
+      "geometry": ["point", "area"],
+      "fields": ["name", "shop"],
+      "moreFields": ["address", "phone", "website"],
+      "searchable": false
+    },
+    "shop/supermarket": {
+      "name": "Supermarket",
+      "icon": "maki-grocery",
+      "geometry": ["point", "area"],
+      "tags": {
+        "shop": "supermarket"
+      },
+      "terms": ["grocery", "store", "market"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "phone",
+        "website"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "payment_multi",
+        "organic"
+      ],
+      "reference": "shop"
+    },
+    "shop/convenience": {
+      "name": "Convenience Store",
+      "icon": "maki-shop",
+      "geometry": ["point", "area"],
+      "tags": {
+        "shop": "convenience"
+      },
+      "terms": ["bodega", "corner shop", "mini mart", "small store"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "phone"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "payment_multi"
+      ],
+      "reference": "shop"
+    },
+    "highway/bus_stop": {
+      "name": "Bus Stop",
+      "icon": "maki-bus",
+      "geometry": ["point", "vertex"],
+      "tags": {
+        "highway": "bus_stop"
+      },
+      "terms": ["public transport", "transit", "bus station"],
+      "fields": [
+        "name",
+        "network",
+        "operator",
+        "ref",
+        "shelter",
+        "bench"
+      ],
+      "moreFields": [
+        "covered",
+        "bin",
+        "lit"
+      ]
+    },
+    "amenity/parking": {
+      "name": "Parking Area",
+      "icon": "maki-parking",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "parking"
+      },
+      "terms": ["car park", "lot", "garage"],
+      "fields": [
+        "parking",
+        "capacity",
+        "fee",
+        "supervised",
+        "surface",
+        "access_simple"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "operator",
+        "maxstay"
+      ],
+      "reference": "amenity"
+    },
+    "amenity/hospital": {
+      "name": "Hospital",
+      "icon": "maki-hospital",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "hospital"
+      },
+      "terms": ["clinic", "doctor", "emergency", "health", "medical"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "emergency",
+        "phone",
+        "website"
+      ],
+      "moreFields": [
+        "beds",
+        "health_specialty"
+      ],
+      "reference": "amenity"
+    },
+    "amenity/school": {
+      "name": "School",
+      "icon": "maki-school",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "school"
+      },
+      "terms": ["academy", "college", "education", "elementary", "high school", "learning", "university"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "phone",
+        "website"
+      ],
+      "moreFields": [
+        "grades",
+        "fee"
+      ],
+      "reference": "amenity"
+    },
+    "amenity/library": {
+      "name": "Library",
+      "icon": "maki-library",
+      "geometry": ["point", "area"],
+      "tags": {
+        "amenity": "library"
+      },
+      "terms": ["book", "books", "reading", "study"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "phone",
+        "website"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "internet_access",
+        "fee"
+      ],
+      "reference": "amenity"
+    },
+    "leisure/park": {
+      "name": "Park",
+      "icon": "maki-park",
+      "geometry": ["point", "area"],
+      "tags": {
+        "leisure": "park"
+      },
+      "terms": ["common", "garden", "green", "green space", "playground", "recreation area"],
+      "fields": [
+        "name",
+        "operator",
+        "address",
+        "access_simple",
+        "dog"
+      ],
+      "moreFields": [
+        "opening_hours",
+        "fee",
+        "surface"
+      ]
+    },
+    "leisure/playground": {
+      "name": "Playground",
+      "icon": "maki-playground",
+      "geometry": ["point", "area"],
+      "tags": {
+        "leisure": "playground"
+      },
+      "terms": ["jungle gym", "play area", "swing set", "kids"],
+      "fields": [
+        "name",
+        "operator",
+        "surface",
+        "min_age",
+        "max_age"
+      ],
+      "moreFields": [
+        "access_simple",
+        "fee",
+        "lit"
+      ]
+    }
+  },
+  "fields": {
+    "name": {
+      "key": "name",
+      "type": "text",
+      "label": "Name",
+      "placeholder": "Common name",
+      "universal": true
+    },
+    "cuisine": {
+      "key": "cuisine",
+      "type": "combo",
+      "label": "Cuisine",
+      "strings": {
+        "options": {
+          "pizza": "Pizza",
+          "burger": "Burger",
+          "chinese": "Chinese",
+          "italian": "Italian",
+          "mexican": "Mexican",
+          "indian": "Indian",
+          "japanese": "Japanese",
+          "thai": "Thai",
+          "vietnamese": "Vietnamese"
+        }
+      }
+    },
+    "phone": {
+      "key": "phone",
+      "type": "tel",
+      "label": "Phone",
+      "placeholder": "+1-234-567-8900",
+      "universal": true
+    },
+    "website": {
+      "key": "website",
+      "type": "url",
+      "label": "Website",
+      "placeholder": "https://example.com",
+      "universal": true
+    },
+    "email": {
+      "key": "email",
+      "type": "email",
+      "label": "Email",
+      "placeholder": "example@example.com"
+    },
+    "address": {
+      "type": "address",
+      "label": "Address",
+      "keys": ["addr:housenumber", "addr:street", "addr:city", "addr:postcode"]
+    },
+    "opening_hours": {
+      "key": "opening_hours",
+      "type": "text",
+      "label": "Opening Hours",
+      "placeholder": "Mo-Fr 09:00-17:00"
+    },
+    "outdoor_seating": {
+      "key": "outdoor_seating",
+      "type": "check",
+      "label": "Outdoor Seating"
+    },
+    "delivery": {
+      "key": "delivery",
+      "type": "check",
+      "label": "Delivery"
+    },
+    "takeaway": {
+      "key": "takeaway",
+      "type": "check",
+      "label": "Takeaway"
+    },
+    "smoking": {
+      "key": "smoking",
+      "type": "radio",
+      "label": "Smoking",
+      "strings": {
+        "options": {
+          "yes": "Allowed",
+          "no": "Not allowed",
+          "outside": "Outside only"
+        }
+      }
+    },
+    "internet_access": {
+      "key": "internet_access",
+      "type": "combo",
+      "label": "Internet Access",
+      "strings": {
+        "options": {
+          "yes": "Yes",
+          "no": "No",
+          "wlan": "WiFi",
+          "wired": "Wired"
+        }
+      }
+    },
+    "operator": {
+      "key": "operator",
+      "type": "text",
+      "label": "Operator"
+    },
+    "capacity": {
+      "key": "capacity",
+      "type": "number",
+      "label": "Capacity",
+      "placeholder": "50"
+    },
+    "fee": {
+      "key": "fee",
+      "type": "radio",
+      "label": "Fee",
+      "strings": {
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "surface": {
+      "key": "surface",
+      "type": "combo",
+      "label": "Surface",
+      "strings": {
+        "options": {
+          "paved": "Paved",
+          "unpaved": "Unpaved",
+          "asphalt": "Asphalt",
+          "concrete": "Concrete",
+          "grass": "Grass",
+          "gravel": "Gravel"
+        }
+      }
+    },
+    "access_simple": {
+      "key": "access",
+      "type": "radio",
+      "label": "Access",
+      "strings": {
+        "options": {
+          "yes": "Public",
+          "private": "Private",
+          "permissive": "Permissive"
+        }
+      }
+    },
+    "shop": {
+      "key": "shop",
+      "type": "text",
+      "label": "Shop Type"
+    },
+    "network": {
+      "key": "network",
+      "type": "text",
+      "label": "Network"
+    },
+    "ref": {
+      "key": "ref",
+      "type": "text",
+      "label": "Reference"
+    },
+    "shelter": {
+      "key": "shelter",
+      "type": "check",
+      "label": "Shelter"
+    },
+    "bench": {
+      "key": "bench",
+      "type": "check",
+      "label": "Bench"
+    },
+    "parking": {
+      "key": "parking",
+      "type": "combo",
+      "label": "Type",
+      "strings": {
+        "options": {
+          "surface": "Surface",
+          "multi-storey": "Multi-storey",
+          "underground": "Underground"
+        }
+      }
+    },
+    "supervised": {
+      "key": "supervised",
+      "type": "check",
+      "label": "Supervised"
+    },
+    "emergency": {
+      "key": "emergency",
+      "type": "check",
+      "label": "Emergency Services"
+    },
+    "beds": {
+      "key": "beds",
+      "type": "number",
+      "label": "Beds"
+    },
+    "grades": {
+      "key": "grades",
+      "type": "text",
+      "label": "Grades"
+    },
+    "dog": {
+      "key": "dog",
+      "type": "radio",
+      "label": "Dogs",
+      "strings": {
+        "options": {
+          "yes": "Allowed",
+          "no": "Not allowed",
+          "leashed": "On leash"
+        }
+      }
+    },
+    "min_age": {
+      "key": "min_age",
+      "type": "number",
+      "label": "Minimum Age"
+    },
+    "max_age": {
+      "key": "max_age",
+      "type": "number",
+      "label": "Maximum Age"
+    },
+    "lit": {
+      "key": "lit",
+      "type": "check",
+      "label": "Lit"
+    },
+    "description": {
+      "key": "description",
+      "type": "textarea",
+      "label": "Description",
+      "universal": true
+    },
+    "building_area": {
+      "key": "building",
+      "type": "check",
+      "label": "Building",
+      "geometry": ["area"]
+    },
+    "payment_multi": {
+      "key": "payment",
+      "type": "multiCheck",
+      "label": "Payment Types"
+    },
+    "reservation": {
+      "key": "reservation",
+      "type": "check",
+      "label": "Accepts Reservations"
+    },
+    "microbrewery": {
+      "key": "microbrewery",
+      "type": "check",
+      "label": "Microbrewery"
+    },
+    "organic": {
+      "key": "organic",
+      "type": "check",
+      "label": "Organic Products"
+    },
+    "covered": {
+      "key": "covered",
+      "type": "check",
+      "label": "Covered"
+    },
+    "bin": {
+      "key": "bin",
+      "type": "check",
+      "label": "Waste Bin"
+    },
+    "maxstay": {
+      "key": "maxstay",
+      "type": "text",
+      "label": "Maximum Stay"
+    },
+    "health_specialty": {
+      "key": "healthcare:speciality",
+      "type": "text",
+      "label": "Specialties"
+    }
+  }
+}
