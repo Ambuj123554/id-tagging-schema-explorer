@@ -1,11 +1,6 @@
-/**
- * FieldSourceVisualization Component
- * Shows where each field comes from in the inheritance chain
- */
 const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
   if (!schemaContext || !preset) return null;
 
-  // Get complete ancestry chain
   const getAncestryChain = (presetId) => {
     const chain = [];
     let current = schemaContext.getPresetById(presetId);
@@ -22,14 +17,11 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
     return chain;
   };
 
-  // Build field source map
   const buildFieldSourceMap = () => {
     const ancestryChain = getAncestryChain(preset.id);
     const fieldSources = new Map();
 
-    // Work backwards from root to current
     ancestryChain.forEach((ancestor) => {
-      // Track where each field was first introduced
       (ancestor.fields || []).forEach(fieldId => {
         if (!fieldSources.has(fieldId)) {
           fieldSources.set(fieldId, {
@@ -59,7 +51,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
   const { fieldSources, ancestryChain } = buildFieldSourceMap();
   const currentIndex = ancestryChain.findIndex(a => a.id === preset.id);
 
-  // Group fields by source
   const fieldsBySource = new Map();
   fieldSources.forEach((info, fieldId) => {
     const sourceId = info.source.id;
@@ -82,7 +73,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
     }
   });
 
-  // Sort by level (root first)
   const sortedSources = Array.from(fieldsBySource.entries())
     .sort(([, a], [, b]) => a.level - b.level);
 
@@ -106,7 +96,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
 
           return (
             <div key={sourceId} className="space-y-3">
-              {/* Source Header */}
               <div className={`
                 flex items-center gap-3 p-3 rounded-lg border bg-white
                 ${isCurrent ? 'border-blue-500 shadow-sm' : 'border-gray-200'}
@@ -133,7 +122,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
                 </div>
               </div>
 
-              {/* Primary Fields */}
               {sourceData.fields.length > 0 && (
                 <div className="ml-6 space-y-2">
                   <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
@@ -156,7 +144,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
                 </div>
               )}
 
-              {/* Optional Fields */}
               {sourceData.moreFields.length > 0 && (
                 <div className="ml-6 space-y-2">
                   <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
@@ -182,7 +169,6 @@ const FieldSourceVisualization = ({ preset, fields, schemaContext }) => {
           );
         })}
 
-        {/* Legend */}
         <div className="mt-6 pt-4 border-t border-gray-200">
           <div className="flex items-center gap-4 text-xs text-gray-600">
             <span className="font-semibold">Legend:</span>

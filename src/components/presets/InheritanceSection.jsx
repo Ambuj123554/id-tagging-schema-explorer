@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-/**
- * InheritanceSection Component
- * Shows inheritance information: parent preset and field separation
- */
 const InheritanceSection = ({ parent, ownFields, inheritedFields }) => {
   const [showInherited, setShowInherited] = useState(false);
 
@@ -19,7 +15,6 @@ const InheritanceSection = ({ parent, ownFields, inheritedFields }) => {
       </div>
 
       <div className="p-5 space-y-4">
-        {/* Parent Preset Info */}
         {parent ? (
           <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-50/50 border border-blue-200 rounded-lg">
             <div className="flex items-start gap-3">
@@ -56,7 +51,6 @@ const InheritanceSection = ({ parent, ownFields, inheritedFields }) => {
           </div>
         )}
 
-        {/* Own Fields */}
         {ownFields.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -89,7 +83,6 @@ const InheritanceSection = ({ parent, ownFields, inheritedFields }) => {
           </div>
         )}
 
-        {/* Inherited Fields - Collapsible */}
         {inheritedFields.length > 0 && (
           <div>
             <button
@@ -138,7 +131,6 @@ const InheritanceSection = ({ parent, ownFields, inheritedFields }) => {
           </div>
         )}
 
-        {/* Summary */}
         <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg border border-gray-200">
           <div className="text-xs space-y-2.5">
             <div className="flex items-center justify-between">

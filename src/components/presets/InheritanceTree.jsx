@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-/**
- * InheritanceTree Component
- * Visualizes the inheritance hierarchy (parent → current → children)
- */
 const InheritanceTree = ({ preset, schemaContext }) => {
   const [expandedNodes, setExpandedNodes] = useState(new Set([preset.id]));
   
@@ -11,13 +7,12 @@ const InheritanceTree = ({ preset, schemaContext }) => {
 
   if (!schemaContext) return null;
 
-  // Build complete ancestry chain (from root to current preset)
   const getAncestryChain = (presetId) => {
     const chain = [];
     let current = schemaContext.getPresetById(presetId);
     
     while (current) {
-      chain.unshift(current); // Add to beginning
+      chain.unshift(current);
       if (current.reference) {
         current = schemaContext.getPresetById(current.reference);
       } else {
@@ -28,9 +23,8 @@ const InheritanceTree = ({ preset, schemaContext }) => {
     return chain;
   };
 
-  // Get all descendants (children, grandchildren, etc.)
   const getDescendants = (presetId, depth = 0) => {
-    if (depth > 10) return []; // Prevent infinite recursion
+    if (depth > 10) return [];
     
     const children = Object.values(schemaContext.presets).filter(
       p => p.reference === presetId
@@ -76,7 +70,6 @@ const InheritanceTree = ({ preset, schemaContext }) => {
             }
           `}
         >
-          {/* Expand/Collapse button for nodes with children */}
           {hasChildren && (
             <button
               onClick={() => toggleExpand(nodePreset.id)}
@@ -87,10 +80,8 @@ const InheritanceTree = ({ preset, schemaContext }) => {
           )}
           {!hasChildren && <div className="w-6" />}
 
-          {/* Icon */}
           <span className="text-2xl flex-shrink-0">{nodePreset.icon}</span>
 
-          {/* Content */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
               <h4 className="font-semibold text-gray-900 text-sm">
@@ -110,7 +101,6 @@ const InheritanceTree = ({ preset, schemaContext }) => {
             <p className="text-xs text-gray-500 font-mono mt-0.5">{nodePreset.id}</p>
           </div>
 
-          {/* Stats */}
           <div className="flex gap-3 text-xs text-gray-500">
             <span className="flex items-center gap-1">
               <span className="font-medium">{nodePreset.fields?.length || 0}</span> fields
@@ -121,7 +111,6 @@ const InheritanceTree = ({ preset, schemaContext }) => {
           </div>
         </div>
 
-        {/* Connection line to next node */}
         {!isCurrent && (
           <div className="flex items-center justify-center h-6">
             <div className="w-px h-full bg-gray-300" />
@@ -143,14 +132,12 @@ const InheritanceTree = ({ preset, schemaContext }) => {
       </div>
 
       <div className="p-5 space-y-2">
-        {/* Ancestry Chain (from root to current) */}
         {ancestryChain.map((ancestor, index) => {
           const isCurrent = index === currentIndex;
           const isAncestor = index < currentIndex;
           return renderPresetNode(ancestor, isCurrent, isAncestor);
         })}
 
-        {/* Descendants (children and beyond) */}
         {descendants.length > 0 && (
           <>
             <div className="flex items-center justify-center h-6">
@@ -164,7 +151,6 @@ const InheritanceTree = ({ preset, schemaContext }) => {
           </>
         )}
 
-        {/* Info message if no descendants */}
         {descendants.length === 0 && (
           <>
             <div className="flex items-center justify-center h-6">

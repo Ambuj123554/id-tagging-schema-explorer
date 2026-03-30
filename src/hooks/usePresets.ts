@@ -11,14 +11,12 @@ export const usePresets = () => {
   const [error, setError] = useState(null);
   const [schemaData, setSchemaData] = useState(null);
 
-  // Load schema data on mount
   useEffect(() => {
     const loadSchema = async () => {
       try {
         setLoading(true);
         setError(null);
         
-        // Load from public folder (accessible via Vite)
         const rawSchema = await loadSchemaFromFile('/sampleSchema.json');
         const parsed = parseSchema(rawSchema);
         
@@ -29,7 +27,6 @@ export const usePresets = () => {
         setError(err.message || 'Failed to load schema');
         setLoading(false);
         
-        // Set empty data as fallback
         setSchemaData({
           presets: {},
           fields: {},
@@ -42,30 +39,25 @@ export const usePresets = () => {
     loadSchema();
   }, []);
 
-  // Memoize presets array conversion
   const allPresets = useMemo(() => {
     if (!schemaData) return [];
     return presetsToArray(schemaData.presets);
   }, [schemaData]);
 
-  // Memoize fields array conversion
   const fields = useMemo(() => {
     if (!schemaData) return [];
     return Object.values(schemaData.fields);
   }, [schemaData]);
 
-  // Memoize categories
   const categories = useMemo(() => {
     if (!schemaData) return ['All'];
     return schemaData.categories;
   }, [schemaData]);
 
-  // Memoize filtered presets
   const filteredPresets = useMemo(() => {
     if (!allPresets) return [];
 
     return allPresets.filter(preset => {
-      // Search filter
       const matchesSearch = searchQuery === '' ||
         preset.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         Object.values(preset.tags || {}).some(v => 
@@ -75,14 +67,12 @@ export const usePresets = () => {
           term.toLowerCase().includes(searchQuery.toLowerCase())
         ));
 
-      // Category filter
       const matchesCategory = selectedCategory === 'All' || preset.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });
   }, [allPresets, searchQuery, selectedCategory]);
 
-  // Memoize schema context for components
   const schemaContext = useMemo(() => {
     if (!schemaData) return { presets: {}, getPresetById: () => null };
     

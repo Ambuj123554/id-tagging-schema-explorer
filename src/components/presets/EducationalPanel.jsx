@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-/**
- * EducationalPanel Component
- * Provides helpful context and explanations about presets, fields, and inheritance
- */
 const EducationalPanel = ({ preset, schemaContext }) => {
   const [expandedSections, setExpandedSections] = useState(new Set(['overview']));
 

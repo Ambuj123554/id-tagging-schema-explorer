@@ -1,11 +1,6 @@
-/**
- * MetadataVisualization Component
- * Shows detailed metadata about the preset including geometry, scoring, and advanced info
- */
 const MetadataVisualization = ({ preset, schemaContext }) => {
   if (!preset) return null;
 
-  // Calculate statistics
   const getPresetStats = () => {
     const stats = {
       totalFields: (preset.fields?.length || 0) + (preset.moreFields?.length || 0),
@@ -16,7 +11,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
       geometryTypes: preset.geometry?.length || 0,
     };
 
-    // Count inherited vs direct
     if (schemaContext && preset.reference) {
       const parent = schemaContext.getPresetById(preset.reference);
       if (parent) {
@@ -31,12 +25,10 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
 
   const stats = getPresetStats();
 
-  // Get children count
-  const childrenCount = schemaContext 
+  const childrenCount = schemaContext
     ? Object.values(schemaContext.presets).filter(p => p.reference === preset.id).length
     : 0;
 
-  // Geometry type descriptions
   const geometryDescriptions = {
     point: 'Single location point (e.g., a tree, a bench)',
     vertex: 'Vertex along a line (e.g., turn in a road)',
@@ -44,7 +36,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
     area: 'Enclosed polygon (e.g., building, park, lake)',
   };
 
-  // Field type breakdown
   const getFieldTypeBreakdown = (fields, fieldIds) => {
     const breakdown = {};
     fieldIds?.forEach(fieldId => {
@@ -70,7 +61,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
       </div>
 
       <div className="p-5 space-y-5">
-        {/* Quick Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
             <div className="text-2xl font-semibold text-gray-900">{stats.totalFields}</div>
@@ -90,7 +80,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
           </div>
         </div>
 
-        {/* Geometry Details */}
         {preset.geometry && preset.geometry.length > 0 && (
           <div className="space-y-3">
             <h4 className="text-sm font-semibold text-gray-800">
@@ -120,7 +109,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
           </div>
         )}
 
-        {/* Field Breakdown */}
         <div className="space-y-3">
           <h4 className="text-sm font-semibold text-gray-800">
             Field Composition
@@ -142,7 +130,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
           </div>
         </div>
 
-        {/* Searchability Info */}
         <div className="space-y-3">
           <h4 className="text-sm font-semibold text-gray-800">
             Searchability
@@ -165,7 +152,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
           </div>
         </div>
 
-        {/* Inheritance Info */}
         {preset.reference && (
           <div className="space-y-3">
             <h4 className="text-sm font-semibold text-gray-800">
@@ -191,7 +177,6 @@ const MetadataVisualization = ({ preset, schemaContext }) => {
           </div>
         )}
 
-        {/* Technical Details */}
         <div className="space-y-3">
           <h4 className="text-sm font-semibold text-gray-800">
             Technical Details
